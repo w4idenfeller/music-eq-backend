@@ -11,7 +11,7 @@ import uuid, os
 app = Flask(__name__)
 CORS(app)
 
-yamnet_model = hub.load('yamnet_module')
+yamnet_model = hub.load('https://tfhub.dev/google/yamnet/1')
 
 class_map_path = 'yamnet_module/yamnet_class_map.csv'
 
