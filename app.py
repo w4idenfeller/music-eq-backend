@@ -13,10 +13,10 @@ CORS(app)
 
 yamnet_model = hub.load('https://tfhub.dev/google/yamnet/1')
 
-class_map_path = 'yamnet_module/yamnet_class_map.csv'
+class_map_path = yamnet_model.class_map_path().numpy().decode("utf-8") 
 
-with open(class_map_path, 'r') as f:
-    class_names = [l.strip().split(',')[2] for l in f.readlines()[1:]]
+with open(class_map_path, "r") as f:
+    class_names = [name.strip() for name in f.readlines()]
 
 def load_audio(file_path):
     # tek adımda dosyayı oku, mono’ya çevir ve 16 kHz’e yeniden örnekle
